@@ -1,0 +1,111 @@
+{% extends "storefront/base.html" %}
+{%load static%}
+{% load widget_tweaks %}
+
+{% block content %}
+
+<div class='col mt-2 text-right'>
+
+  <div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Sort By
+      <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+      <li><a href="{% url 'product_list'%}?q={{request.GET.q}}&sort=Price">Price</a></li>
+      <li><a href="{% url 'product_list'%}?q={{request.GET.q}}&sort=date">Newest</a></li>
+    </ul>
+  </div>
+</div>
+
+
+  <h4 class='ml-3'>Filter</h4>
+  <div class='row mt-4'>
+    <div class='mt-1 col-5'>
+
+      <form method="get" id='wrap'>
+        <div class="well">
+
+          <div class="container p-3">
+            <div>
+              <ul>
+                <li><a href='{%url 'product_list'%}?q={{request.GET.q}}&?price_min=0&price_max=100'>0-100</a></li>
+                <li><a href='{%url 'product_list'%}?price_min=100&price_max=200'>100-200</a></li>
+                <li><a href='{%url 'product_list'%}?price_min=200&price_max=400'>200-400</a></li>
+                <li><a href='{%url 'product_list'%}?price_min=1000&price_max=2000'>1000-2000</a></li>
+                <li><a href='{%url 'product_list'%}?price_min=2000&price_max=3000'>2000-3000</a></li>
+                <li><a href='{%url 'product_list'%}?price_min=3000&price_max=4000'>3000-4000</a></li>
+
+              </ul>
+            </div>
+            <div class="form-group col-sm-8 col-md-6 chk">
+              {{ filter.form.category.label_tag }}
+              <div>
+                {% for choice in filter.form.category %}
+
+                <label onclick='submits()'>
+                  {{ choice.tag }} {{ choice.choice_label }}
+                </label>
+
+                {% endfor %}
+              </div>
+            </div>
+            <div class="form-group col-sm-8 col-md-6 chk">
+              {{ filter.form.status.label_tag }}
+              <div>
+                {% for choice in filter.form.status %}
+
+                <label onclick='submits()'>
+                  {{ choice.tag }} {{ choice.choice_label }}
+                </label>
+
+                {% endfor %}
+              </div>
+            </div>
+
+            <div class="form-group col-sm-8 col-md-6">
+              {{ filter.form.name__icontains.label_tag }}
+              {% render_field filter.form.name__icontains class="form-control" %}
+            </div>
+            <div class="form-group col-sm-8 col-md-6">
+              {{ filter.form.date_posted.label_tag }}
+              {% render_field filter.form.date_posted class="form-control" %}
+            </div>
+            <div class="form-group col-sm-8 col-md-6">
+              {{ filter.form.date_posted__year__gt.label_tag }}
+              {% render_field filter.form.date_posted__year__gt class="form-control" %}
+            </div>
+            <div class="form-group col-sm-8 col-md-6">
+              {{ filter.form.date_posted__year__lt.label_tag }}
+              {% render_field filter.form.date_posted__year__lt class="form-control" %}
+            </div>
+            <div class="form-group col-sm-8 col-md-6">
+              {{ filter.form.price__lt.label_tag }}
+              {% render_field filter.form.price__lt class="form-control" %}
+            </div>
+            <div class="form-group col-sm-8 col-md-6">
+              {{ filter.form.price__gt.label_tag }}
+              {% render_field filter.form.price__gt class="form-control" %}
+            </div>
+            <div class="form-group col-sm-8 col-md-6">
+              {{ filter.form.price.label_tag }}
+              {% render_field filter.form.price class="form-control" %}
+            </div>
+            <button type="submit" class="btn btn-primary">
+                <span class="glyphicon glyphicon-search"></span> Search
+              </button>
+          </div>
+          
+        </div>
+      </form>
+    </div>
+    <div class='col-7'>
+      <div class='container'>
+        {%for product in filter.qs%}
+        <li>{{product.name}} and {{product.price}}</li>
+        {%endfor%}
+      </div>
+    </div>
+  </div>
+  {% endblock %}
+  {% block extrajs %}
+  <script src="{% static 'storefront/js/filter.js' %}"></script>
+  {% endblock %}

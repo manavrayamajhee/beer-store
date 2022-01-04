@@ -1,0 +1,174 @@
+{%load static%}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link rel="stylesheet"href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.15/jquery.bxslider.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="{% static 'users/main.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'storefront/detail.css' %}">
+    <title>Pasal|Home</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{%url 'store-home'%}"><i class="material-icons">
+                    whatshot
+                    </i></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{%url 'products'%}">All</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Electronics
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{%url 'catsearch' category='clothing'%}">Clothing</a>
+                <a class="dropdown-item" href="#">Electronics</a>
+                <a class="dropdown-item" href="#">Food</a>
+                <a class="dropdown-item" href="#">Books</a>
+                <div class="dropdown-divider">Alcohol</div>
+                <a class="dropdown-item" href="#">Beer</a>
+                <a class="dropdown-item" href="#">Wine</a>
+                <a class="dropdown-item" href="#">Hard Liquor</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Clothing & Shoes
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="#">Nike</a>
+                  <a class="dropdown-item" href="#">Adidas</a>
+                  <a class="dropdown-item" href="#">Puma</a>
+                  <a class="dropdown-item" href="#">Apple</a>
+                  <a class="dropdown-item" href="#">Dell</a>
+                  <div class="dropdown-divider">Alcohol</div>
+                  <a class="dropdown-item" href="#">Beer</a>
+                  <a class="dropdown-item" href="#">Wine</a>
+                  <a class="dropdown-item" href="#">Hard Liquor</a>
+                </div>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Home & Decor
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="#">Nike</a>
+                  <a class="dropdown-item" href="#">Adidas</a>
+                  <a class="dropdown-item" href="#">Puma</a>
+                  <a class="dropdown-item" href="#">Apple</a>
+                  <a class="dropdown-item" href="#">Dell</a>
+                  <div class="dropdown-divider">Alcohol</div>
+                  <a class="dropdown-item" href="#">Beer</a>
+                  <a class="dropdown-item" href="#">Wine</a>
+                  <a class="dropdown-item" href="#">Hard Liquor</a>
+                </div>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Food
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="#">Nike</a>
+                  <a class="dropdown-item" href="#">Adidas</a>
+                  <a class="dropdown-item" href="#">Puma</a>
+                  <a class="dropdown-item" href="#">Apple</a>
+                  <a class="dropdown-item" href="#">Dell</a>
+                  <div class="dropdown-divider">Alcohol</div>
+                  <a class="dropdown-item" href="#">Beer</a>
+                  <a class="dropdown-item" href="#">Wine</a>
+                  <a class="dropdown-item" href="#">Hard Liquor</a>
+                </div>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Accessories
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="#">Nike</a>
+                  <a class="dropdown-item" href="#">Adidas</a>
+                  <a class="dropdown-item" href="#">Puma</a>
+                  <a class="dropdown-item" href="#">Apple</a>
+                  <a class="dropdown-item" href="#">Dell</a>
+                  <div class="dropdown-divider">Alcohol</div>
+                  <a class="dropdown-item" href="#">Beer</a>
+                  <a class="dropdown-item" href="#">Wine</a>
+                  <a class="dropdown-item" href="#">Hard Liquor</a>
+                </div>
+              </li>
+          </ul>
+          <ul class="navbar-nav ml-auto" >
+              <form class="form-inline fsearch" action="{%url 'product_list'%}">
+                  <div class="sm-form my-0 field">
+                    <input class="form-control mr-sm-2" type="text" name="q" value='{{request.session.query}}'placeholder="Search" aria-label="Search">
+                    
+                    <button class="btn btn-outline-success" type="submit" disabled="disabled">Search</button>
+                  
+                  </div>
+                </form>
+                {%if user.is_authenticated%}
+                <li class="nav-item">
+                  <a class="nav-link" href="{%url 'profile'%}">Profile</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{%url 'logout'%}">Logout</a>
+            </li>
+              {%else%}
+              <li class="nav-item">
+                  <a class="nav-link" href="{%url 'login'%}">Login</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{%url 'register'%}">Register</a>
+            </li>
+            {%endif%}
+              <li class="nav-item">
+                  <a class="nav-link" href="{%url 'order_summary'%}"><i class="material-icons">
+                      shopping_cart
+                      </i><span class='cartnumber'>{{request.session.num}}</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{%url 'order_summary'%}"><i class="material-icons">
+                    shopping_cart
+                    </i><span class='numse'>{{request.session.num}}</span></a>
+            </li>
+          </ul>
+        </div>
+      </nav>  
+      <div class="container">
+          <div>
+              {%if messages%} 
+              {%for message in messages%}
+              <div class="alert alert-{{message.tags}}">
+                  {{message}}
+              </div>
+              {%endfor%}
+              {%endif%}
+              </div>
+            </div>
+          {%block content%}
+          {%endblock content%}
+    
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.15/jquery.bxslider.min.js"></script>
+    <script type="text/javascript" src="{% static 'storefront/js/sqr.js' %}"></script>
+    {% block extrajs %}
+    {% endblock %}
+  </body>
+</html>

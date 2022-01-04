@@ -1,0 +1,38 @@
+{%extends "storefront/base.html" %}
+{%load static%}   
+{%block content%}
+<div class="container mx-auto mt-4">
+    
+    <div class="row">
+        <div class="col-6 px-2">
+        <img class="img-fluid" src="{{object.product_img.url}}">
+          </div>
+        <div class="col-6 px-2">
+          <h4>{{ object.name }}</h4><br>
+          <h3 class='text-danger'>${{ object.price }}</h3><br>
+          <h5>{{ object.product_description }}</h5>
+          <ul>
+            <li>{{ object.product_features_one}}</li>
+            <li>{{ object.product_features_two}}</li>
+            <li>{{ object.product_features_three}}</li>
+          </ul>  
+          <span>Quantity </span>
+          
+          <select id="inventory-variation-select-quantity" class="select select-custom" data-buy-box-select="quantity">
+            <option value="1" selected="">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+          </select><br>
+  
+    <a href="#" class="btn btn-danger mt-1 SubmitToCart" data-catid="{{ product.id }}">Add to Cart</a>
+  </form>
+        </div>
+        </div>
+        
+{%endblock content%}
+{% block extrajs %}
+<script  src="{% static 'storefront/js/app.js' %}"></script>
+{% endblock %}

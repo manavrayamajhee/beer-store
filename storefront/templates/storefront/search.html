@@ -1,0 +1,69 @@
+{%extends "storefront/base.html" %}
+{% load sorting_tags %}
+{%block content%}
+{% autosort result %} 
+<div class='text-right'>
+        <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Sort By
+                <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                    <li><a href="{% url 'search'%}?q={{request.GET.q}}&sort=Price" >Price</a></li>
+                    <li><a href="{% url 'search'%}?q={{request.GET.q}}&sort=date" >Newest</a></li>
+                </ul>
+              </div>
+    </div>
+    <h5 class="text-center">Search Results</h5>
+    <div>
+      <span class="sexy_line"></span>
+    </div>
+    <div class='text-center'>
+      {{result.count}}<span> Results Found</span>
+    </div>
+  </div>
+  <div>
+      <form method="get">
+          {{ result.form.as_p }}
+          <button type="submit">Search</button>
+        </form>
+  </div>
+    <div class="grid-container">
+      {{result.tags}}
+            {% for product in result.qs %}
+            <div class="product-card">
+                <div class="product-image">
+                  <a href="{%url 'product-detail' product.id%}"><img class="maza" src="{{product.product_img.url}}">
+                  </a>
+                  </div>
+                <div class="product-info">
+                  <h5>{{ product.name }}</h5>
+                  <h6>{{ product.price }}</h6>
+                  <h6>{{ product.date_posted }}</h6>
+                  <a href="{% url 'add_to_cart' product.id %}" class="btn btn-warning">Add to Cart</a>
+                </div>
+              </div>
+                {% endfor %}
+    </div>
+    <div class="page-container"> 
+      {% if is_paginated %}
+
+      {% if page_obj.has_previous %}
+        <a class="btn btn-outline-info mb-4" href="?page=1&q={{request.GET.q}}&sort={{request.GET.sort}}">First</a>
+        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}&q={{request.GET.q}}&sort={{request.GET.sort}}">Previous</a>
+      {% endif %}
+
+      {% for num in page_obj.paginator.page_range %}
+        {% if page_obj.number == num %}
+          <a class="btn btn-info mb-4" href="?page={{ num }}&q={{request.GET.q}}&sort={{request.GET.sort}}">{{ num }}</a>
+        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+          <a class="btn btn-outline-info mb-4" href="?page={{ num }}&q={{request.GET.q}}&sort={{request.GET.sort}}">{{ num }}</a>
+        {% endif %}
+      {% endfor %}
+
+      {% if page_obj.has_next %}
+        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}&q={{request.GET.q}}&sort={{request.GET.sort}}">Next</a>
+        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}&q={{request.GET.q}}&sort={{request.GET.sort}}">Last</a>
+      {% endif %}
+
+    {% endif %}
+  </div>
+{%endblock content%}

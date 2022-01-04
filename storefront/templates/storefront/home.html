@@ -1,0 +1,16 @@
+{%extends "storefront/base.html" %}
+{% load static %}   
+{%block content%}
+<div class='slider'>
+  
+    <div><img src='{% static 'storefront/slider/a.jpg' %}'></div>
+    <div><img src='{% static 'storefront/slider/b.jpg' %}'></div>
+    <div><img src='{% static 'storefront/slider/c.jpg' %}'></div>
+    <div><h3>4</h3></div>
+    <div><h3>5</h3></div>
+    <div><h3>6</h3></div>
+  </div>
+{%endblock content%}
+{% block extrajs %}
+<script  src="{% static 'storefront/js/slide.js' %}"></script>
+{% endblock %}

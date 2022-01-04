@@ -1,0 +1,80 @@
+{% extends "storefront/base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class='row p-5'>
+  <div class='mt-3 col-8'>
+  <table class="table p-5">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col"></th>
+        <th scope="col">Item Description</th>
+        <th scope="col"></th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Unit Price</th>
+        <th scope="col">Total Price</th>
+      </tr>
+    </thead>
+    <tbody>
+        {%for products in order%}
+        <img src='{{products.product_img.url}}'>
+        <tr class='epd'>
+        <th scope="row" class='counter'>{{ forloop.counter }}</th>
+        <td hidden class='pid'>{{products.item.id}}</td>
+        <td><img src='{{products.item.product_img.url}}'class='img-fluid cart-img'></td>
+        <td>{{products.item.name}}</td>
+        <td><a href="{% url 'delete_item' products.item.id %}"><i class="material-icons icon-blue">
+            delete_forever
+            </i></a></td>
+            <td hidden class='quantity'>{{products.quantity}}</td>
+        <td><select class="updateQuantity">
+          
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+          </select>
+          </td>
+          <td class='price'>
+            {{products.item.price}}
+          </td>
+        <td class='total'>
+          {{products.total}}
+        </td>
+      </tr>
+      {%endfor%}
+      </tbody>
+  </table>
+</div> 
+<div class='mt-3 col-4'>
+  <div class="container">
+    
+    <div class="card-body">
+      <h4 class="card-title">Total Amount</h4>
+      <p class="card-text">
+        <span>&#8377;</span>
+        <span class='subtotal'>{{subtotal}}</span>
+        
+      </p>
+      <p>(Before Tax)</p>
+      <a href="#!" class="btn btn-danger">Checkout</a>
+    </div>
+  </div>
+  
+  </div>
+</div>
+
+
+{% endblock %}
+{% block extrajs %}
+{% csrf_token %}
+<script  src="{% static 'cart/js/uquantity.js' %}"></script>
+<script  src="{% static 'cart/js/csrf.js' %}"></script>
+
+{% endblock %}

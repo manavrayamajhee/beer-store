@@ -1,0 +1,55 @@
+{%extends "storefront/base.html" %}
+{%load static%}   
+{%block content%}
+<h5 class="text-center">Products</h5>
+<div>
+  <span class="sexy_line"></span>
+</div>
+<div class='row mx-auto'>
+<div class='ww'>
+  <a href="{%url 'product_list' %}">  Narrow Results</a>
+</div>
+<div class="grid-container">
+        {% for product in object_list %}
+        <div class="product-card p-2">
+            <div class="product-image p-2">
+              <a href="{%url 'product-detail' product.id%}"><img class="maza img-fluid" src="{{product.product_img.url}}">
+              </a>
+              </div>
+            <div class="product-info">
+              <h5>{{ product.name }}</h5>
+              <h6>{{ product.price }}</h6>
+              
+              <a href="#" class="btn btn-warning SubmitToCart" data-catid="{{ product.id }}">Add To Cart</a>
+            </div>
+          </div>
+            {% endfor %}
+</div>
+</div>
+       <div class="page-container mt-2"> 
+        {% if is_paginated %}
+
+        {% if page_obj.has_previous %}
+          <a class="btn btn-secondary-info mb-4" href="?page=1">First</a>
+          <a class="btn btn-secondary-info mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+        {% endif %}
+  
+        {% for num in page_obj.paginator.page_range %}
+          {% if page_obj.number == num %}
+            <a class="btn btn-secondary mb-4" href="?page={{ num }}">{{ num }}</a>
+          {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+            <a class="btn btn-outline-secondary mb-4" href="?page={{ num }}">{{ num }}</a>
+          {% endif %}
+        {% endfor %}
+  
+        {% if page_obj.has_next %}
+          <a class="btn btn-outline-secondary mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
+          <a class="btn btn-outline-secondary mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+        {% endif %}
+  
+      {% endif %}
+    </div>
+{%endblock content%}
+{% block extrajs %}
+<script  src="{% static 'storefront/js/app.js' %}"></script>
+{% endblock %}
